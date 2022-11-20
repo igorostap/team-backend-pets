@@ -29,6 +29,9 @@ const userSchema = new Schema(
       type: String,
       default: "00.00.0000",
     },
+    confirmedPassword: {
+      type: String,
+    },
     avatarURL: {
       type: String,
       // required: true,
@@ -72,6 +75,7 @@ const schemasAuth = {
         .required(),
       phone: Joi.string().regex(new RegExp("^[0-9]{12}$")),
       city: Joi.string().pattern(new RegExp("^[a-zA-Z]{2,50}")),
+      confirmedPassword: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{2,30}")),
     });
     const validateUser = schema.validate(req.body);
     if (validateUser.error) {

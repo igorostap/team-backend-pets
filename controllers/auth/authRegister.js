@@ -7,7 +7,7 @@ require("dotenv").config();
 const { RequestError } = require("../../helpers");
 
 const authRegister = async (req, res) => {
-  const { email, password, name, city, phone } = req.body;
+  const { email, password, name, city, phone, confirmedPassword } = req.body;
   const hashPassword = await bcrypt.hash(password, 10);
   const user = await User.findOne({ email });
   const secureUrl = gravatar.url(name, { s: "100", r: "x", d: "retro" }, true);
@@ -24,6 +24,7 @@ const authRegister = async (req, res) => {
       city,
       phone,
       password: hashPassword,
+      confirmedPassword,
       avatarURL: secureUrl,
       token,
     });
