@@ -75,7 +75,7 @@ const notices = new Schema(
     },
     comments: { type: String },
     owner: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.String,
       ref: "users",
       // required: true,
     },

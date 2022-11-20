@@ -40,7 +40,7 @@ const pets = new Schema(
       type: Number,
     },
     owner: {
-      type: Schema.Types.ObjectId,
+      type: Schema.Types.String,
       ref: "users",
       required: true,
     },
